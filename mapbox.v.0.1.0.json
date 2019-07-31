@@ -42,7 +42,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": "rgba(152, 208, 235, 1)"
+        "fill-color": "rgba(117, 207, 240, 1)"
       }
     },
     {
@@ -52,7 +52,7 @@
         "gt:mapmode": "satellite"
       },
       "source": "mapbox",
-      "source-layer": "water",
+      "source-layer": "waterway",
       "minzoom": 7,
       "filter": [
         "all",
@@ -66,7 +66,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "rgba(155, 176, 214, 1)",
+        "line-color": "rgba(141, 203, 247, 1)",
         "line-opacity": 1,
         "line-width": {
           "stops": [
