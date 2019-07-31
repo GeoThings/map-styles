@@ -1,0 +1,1347 @@
+
+{
+  "version": 8,
+  "name": "Mapbox+GeoThings",
+  "metadata": {},
+  "sources": {
+    "mapbox": {
+      "url": "mapbox://mapbox.mapbox-streets-v7",
+      "type": "vector"
+    }
+  },
+  "sprite": "https://map-assets.geobingan.info/new-sprites/satellite-v9",
+  "glyphs": "https://map-assets.geobingan.info/glyphs/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "maxzoom": 22,
+      "paint": {
+        "background-color": "#e3e2df"
+      }
+    },
+    {
+      "id": "water-polygon",
+      "type": "fill",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "water",
+      "minzoom": 0,
+      "maxzoom": 22,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Polygon"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "rgba(152, 208, 235, 1)"
+      }
+    },
+    {
+      "id": "water-lines",
+      "type": "line",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "water",
+      "minzoom": 7,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "LineString"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgba(155, 176, 214, 1)",
+        "line-opacity": 1,
+        "line-width": {
+          "stops": [
+            [
+              9,
+              1
+            ],
+            [
+              16,
+              4
+            ],
+            [
+              17,
+              6
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "landuse-agriculture",
+      "type": "fill",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "landuse",
+      "minzoom": 4,
+      "maxzoom": 22,
+      "filter": [
+        "all",
+        [
+          "==",
+          "class",
+          "agriculture"
+        ]
+      ],
+      "paint": {
+        "fill-color": "rgba(212, 207, 197, 1)"
+      }
+    },
+    {
+      "id": "landuse-natural-park-high",
+      "type": "fill",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "landuse_overlay",
+      "maxzoom": 10,
+      "filter": [
+        "all",
+        [
+          "in",
+          "class",
+          "national_park"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "rgba(188, 222, 196, 1)"
+      }
+    },
+    {
+      "id": "landuse-forest",
+      "type": "fill",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "landuse",
+      "minzoom": 0,
+      "maxzoom": 24,
+      "filter": [
+        "any",
+        [
+          "==",
+          "class",
+          "wood"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": {
+          "stops": [
+            [
+              4,
+              "rgba(4, 213, 4, 0.1)"
+            ],
+            [
+              10,
+              "rgba(4, 213, 4, 0.3)"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "landuse-university",
+      "type": "fill",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "landuse",
+      "filter": [
+        "all",
+        [
+          "==",
+          "type",
+          "university"
+        ]
+      ],
+      "paint": {
+        "fill-color": "rgba(216, 196, 163, 1)"
+      }
+    },
+    {
+      "id": "landuse-park",
+      "type": "fill",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "landuse",
+      "minzoom": 10,
+      "filter": [
+        "all",
+        [
+          "==",
+          "class",
+          "park"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "rgba(113, 222, 137, 1)"
+      }
+    },
+    {
+      "id": "landuse-school",
+      "type": "fill",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "landuse",
+      "minzoom": 12,
+      "filter": [
+        "all",
+        [
+          "==",
+          "type",
+          "school"
+        ]
+      ],
+      "paint": {
+        "fill-color": "rgba(179, 197, 197, 1)"
+      }
+    },
+    {
+      "id": "maritime-boundary",
+      "type": "line",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "admin",
+      "minzoom": 0,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "==",
+          "maritime",
+          1
+        ]
+      ],
+      "layout": {
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgba(255, 255, 255, 0.5)",
+        "line-dasharray": [
+          5,
+          1
+        ],
+        "line-width": {
+          "base": 1,
+          "stops": [
+            [
+              4,
+              0.4
+            ],
+            [
+              6,
+              2
+            ],
+            [
+              8,
+              2
+            ],
+            [
+              9,
+              4
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "region-boundary",
+      "type": "line",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "admin",
+      "minzoom": 0,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "==",
+          "maritime",
+          0
+        ]
+      ],
+      "layout": {
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgba(255, 255, 255, 1)",
+        "line-dasharray": [
+          5,
+          1
+        ],
+        "line-width": {
+          "base": 1,
+          "stops": [
+            [
+              4,
+              0.4
+            ],
+            [
+              6,
+              2
+            ],
+            [
+              8,
+              2
+            ],
+            [
+              9,
+              4
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "road-path",
+      "type": "line",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "road",
+      "minzoom": 8,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "==",
+          "class",
+          "path"
+        ]
+      ],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-dasharray": [
+          1,
+          2
+        ],
+        "line-color": "rgba(255, 255, 255, 1)",
+        "line-width": {
+          "stops": [
+            [
+              8,
+              0.75
+            ],
+            [
+              10,
+              1
+            ],
+            [
+              16,
+              2
+            ],
+            [
+              22,
+              10
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "rail",
+      "type": "line",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "road",
+      "minzoom": 8,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "==",
+          "type",
+          "rail"
+        ]
+      ],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgba(167, 150, 150, 1)",
+        "line-width": {
+          "stops": [
+            [
+              8,
+              0.75
+            ],
+            [
+              10,
+              1
+            ],
+            [
+              16,
+              5
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "minor-road",
+      "type": "line",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "road",
+      "minzoom": 8,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "in",
+          "class",
+          "service",
+          "street"
+        ]
+      ],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgba(255, 255, 255, 1)",
+        "line-width": {
+          "stops": [
+            [
+              8,
+              0.75
+            ],
+            [
+              10,
+              1
+            ],
+            [
+              13,
+              2
+            ],
+            [
+              16,
+              4
+            ],
+            [
+              22,
+              25
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "highway",
+      "type": "line",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "road",
+      "minzoom": 8,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "==",
+          "class",
+          "motorway"
+        ]
+      ],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": {
+          "stops": [
+            [
+              4,
+              "rgba(239, 176, 176, 1)"
+            ],
+            [
+              16,
+              "rgba(239, 176, 176, 1)"
+            ]
+          ]
+        },
+        "line-width": {
+          "stops": [
+            [
+              8,
+              3
+            ],
+            [
+              10,
+              2
+            ],
+            [
+              12,
+              4
+            ],
+            [
+              16,
+              9
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "major-road-secondary",
+      "type": "line",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "road",
+      "minzoom": 8,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "in",
+          "class",
+          "secondary",
+          "tertiary"
+        ]
+      ],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": {
+          "stops": [
+            [
+              8,
+              "rgba(224, 132, 114, 1)"
+            ],
+            [
+              10,
+              "rgba(255, 255, 255, 1)"
+            ]
+          ]
+        },
+        "line-width": {
+          "stops": [
+            [
+              8,
+              0.75
+            ],
+            [
+              10,
+              1
+            ],
+            [
+              16,
+              5
+            ],
+            [
+              22,
+              40
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "major-road",
+      "type": "line",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "road",
+      "minzoom": 8,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "==",
+          "class",
+          "primary"
+        ]
+      ],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": {
+          "stops": [
+            [
+              8,
+              "rgba(224, 132, 114, 1)"
+            ],
+            [
+              10,
+              "rgba(255, 255, 255, 1)"
+            ]
+          ]
+        },
+        "line-width": {
+          "stops": [
+            [
+              8,
+              0.75
+            ],
+            [
+              10,
+              2
+            ],
+            [
+              16,
+              5
+            ],
+            [
+              22,
+              50
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "country-boundary",
+      "type": "line",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "admin",
+      "minzoom": 0,
+      "filter": [
+        "all",
+        [
+          "==",
+          "admin_level",
+          2
+        ],
+        [
+          "==",
+          "maritime",
+          0
+        ]
+      ],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgba(255, 255, 255, 1)",
+        "line-opacity": {
+          "base": 1,
+          "stops": [
+            [
+              0,
+              0.4
+            ],
+            [
+              4,
+              1
+            ]
+          ]
+        },
+        "line-width": {
+          "stops": [
+            [
+              3,
+              2
+            ],
+            [
+              5,
+              2.5
+            ],
+            [
+              12,
+              4
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "buildings",
+      "type": "fill",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "building",
+      "minzoom": 15,
+      "maxzoom": 24,
+      "filter": [
+        "all"
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "rgba(162, 161, 161, 1)"
+      }
+    },
+    {
+      "id": "buildings-selected",
+      "type": "fill",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "building",
+      "minzoom": 15,
+      "maxzoom": 24,
+      "filter": [
+        "all"
+      ],
+      "layout": {
+        "visibility": "none"
+      },
+      "paint": {
+        "fill-color": "rgba(248, 117, 2, 0.5)"
+      }
+    },
+    {
+      "id": "buildings-3d",
+      "type": "fill-extrusion",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "building",
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-extrusion-opacity": 0.75,
+        "fill-extrusion-height": {
+          "property": "height",
+          "type": "identity",
+          "default": 3
+        },
+        "fill-extrusion-color": "rgba(162, 161, 161, 0.85)"
+      }
+    },
+    {
+      "id": "country-names",
+      "type": "symbol",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "country_label",
+      "minzoom": 0,
+      "maxzoom": 15,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "==",
+          "type",
+          "country"
+        ]
+      ],
+      "layout": {
+        "text-field": "{name}",
+        "text-font": [
+          "Noto Sans Bold"
+        ],
+        "text-max-width": 6.25,
+        "text-size": {
+          "stops": [
+            [
+              1,
+              11
+            ],
+            [
+              4,
+              17
+            ]
+          ]
+        },
+        "text-transform": "none",
+        "visibility": "visible"
+      },
+      "paint": {
+        "text-color": "rgba(255, 255, 255, 1)",
+        "text-halo-color": "rgba(0, 0, 0, 1)",
+        "text-halo-width": 1,
+        "text-opacity": 1
+      }
+    },
+    {
+      "id": "city-region-capital",
+      "type": "symbol",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "place_label",
+      "minzoom": 5,
+      "maxzoom": 8,
+      "filter": [
+        "all",
+        [
+          ">",
+          "capital",
+          2
+        ]
+      ],
+      "layout": {
+        "icon-image": "circle-11",
+        "text-anchor": "bottom",
+        "text-field": "{name}",
+        "text-font": [
+          "Noto Sans Bold"
+        ],
+        "text-max-width": 8,
+        "text-offset": [
+          0,
+          0
+        ],
+        "text-size": {
+          "base": 1.2,
+          "stops": [
+            [
+              7,
+              14
+            ],
+            [
+              11,
+              24
+            ]
+          ]
+        },
+        "icon-allow-overlap": true,
+        "icon-optional": false,
+        "visibility": "visible",
+        "icon-size": 0.5,
+        "icon-offset": [
+          0,
+          3
+        ]
+      },
+      "paint": {
+        "text-color": "rgba(255, 255, 255, 1)",
+        "text-halo-color": "rgba(0, 0, 0, 1)",
+        "text-halo-width": 1,
+        "text-opacity": 1
+      }
+    },
+    {
+      "id": "city-capital",
+      "type": "symbol",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "place_label",
+      "minzoom": 5,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "==",
+          "capital",
+          2
+        ]
+      ],
+      "layout": {
+        "icon-image": "circle-11",
+        "text-anchor": "bottom",
+        "text-field": "{name}",
+        "text-font": [
+          "Noto Sans Bold"
+        ],
+        "text-max-width": 8,
+        "text-offset": [
+          0,
+          0
+        ],
+        "text-size": {
+          "base": 1.2,
+          "stops": [
+            [
+              7,
+              14
+            ],
+            [
+              10,
+              30
+            ],
+            [
+              12,
+              24
+            ]
+          ]
+        },
+        "icon-allow-overlap": true,
+        "icon-optional": false,
+        "visibility": "visible",
+        "icon-size": 0.8,
+        "icon-offset": [
+          0,
+          3
+        ]
+      },
+      "paint": {
+        "text-color": "rgba(255, 255, 255, 1)",
+        "text-halo-color": "rgba(0, 0, 0, 1)",
+        "text-halo-width": 1,
+        "text-opacity": 1
+      }
+    },
+    {
+      "id": "town",
+      "type": "symbol",
+      "source": "mapbox",
+      "source-layer": "place_label",
+      "minzoom": 9,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "==",
+          "type",
+          "town"
+        ]
+      ],
+      "layout": {
+        "icon-image": "circle-11",
+        "text-anchor": "bottom",
+        "text-field": "{name}",
+        "text-font": [
+          "Noto Sans Bold"
+        ],
+        "text-max-width": 10,
+        "text-offset": [
+          0,
+          -0.3
+        ],
+        "text-size": 10,
+        "icon-allow-overlap": true,
+        "icon-optional": false,
+        "visibility": "visible",
+        "icon-size": 0.3
+      },
+      "paint": {
+        "text-color": "rgba(255, 255, 255, 1)",
+        "text-halo-color": "rgba(0, 0, 0, 1)",
+        "text-halo-width": 1,
+        "text-opacity": 1
+      }
+    },
+    {
+      "id": "city",
+      "type": "symbol",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "place_label",
+      "minzoom": 8,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "==",
+          "type",
+          "city"
+        ],
+        [
+          "!=",
+          "capital",
+          ""
+        ]
+      ],
+      "layout": {
+        "icon-image": "circle-11",
+        "text-anchor": "bottom",
+        "text-field": "{name}",
+        "text-font": [
+          "Noto Sans Bold"
+        ],
+        "text-max-width": 8,
+        "text-offset": [
+          0,
+          -0.3
+        ],
+        "text-size": 16,
+        "icon-allow-overlap": true,
+        "icon-optional": false,
+        "visibility": "visible",
+        "icon-size": 0.5
+      },
+      "paint": {
+        "text-color": "rgba(255, 255, 255, 1)",
+        "text-halo-color": "rgba(0, 0, 0, 1)",
+        "text-halo-width": 1,
+        "text-opacity": 1
+      }
+    },
+    {
+      "id": "city-selected",
+      "type": "symbol",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "place_label",
+      "minzoom": 8,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "==",
+          "type",
+          "city"
+        ],
+        [
+          "!has",
+          "capital"
+        ]
+      ],
+      "layout": {
+        "icon-image": "circle-11",
+        "text-anchor": "bottom",
+        "text-field": "{name}",
+        "text-font": [
+          "Noto Sans Bold"
+        ],
+        "text-max-width": 8,
+        "text-offset": [
+          0,
+          -0.3
+        ],
+        "text-size": 16,
+        "icon-allow-overlap": true,
+        "icon-optional": false,
+        "visibility": "none",
+        "icon-size": 0.5
+      },
+      "paint": {
+        "text-color": "rgba(245, 167, 58, 1)",
+        "text-halo-color": "rgba(57, 42, 11, 1)",
+        "text-halo-width": 1,
+        "text-opacity": 1
+      }
+    },
+    {
+      "id": "road-labels",
+      "type": "symbol",
+      "metadata": {
+        "mapbox:group": "1456163609504.0715",
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "road_label",
+      "minzoom": 11,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "LineString"
+        ]
+      ],
+      "layout": {
+        "text-field": "{name}",
+        "text-font": [
+          "Noto Sans Bold"
+        ],
+        "text-size": {
+          "base": 1,
+          "stops": [
+            [
+              13,
+              12
+            ],
+            [
+              14,
+              13
+            ]
+          ]
+        },
+        "symbol-placement": "line"
+      },
+      "paint": {
+        "text-color": "rgba(255, 255, 255, 1)",
+        "text-halo-color": "rgba(0, 0, 0, 1)",
+        "text-halo-width": 1,
+        "text-opacity": 1
+      }
+    },
+    {
+      "id": "poi-markers-default",
+      "type": "symbol",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "poi_label",
+      "minzoom": 0,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "has",
+          "name"
+        ],
+        [
+          "!has",
+          "maki"
+        ]
+      ],
+      "layout": {
+        "text-field": "{name}",
+        "icon-image": "circle-11",
+        "text-font": [
+          "Noto Sans Bold"
+        ],
+        "text-size": {
+          "base": 1,
+          "stops": [
+            [
+              13,
+              13
+            ],
+            [
+              14,
+              14
+            ]
+          ]
+        },
+        "icon-offset": [
+          0,
+          25
+        ],
+        "icon-size": 0.5,
+        "visibility": "none"
+      },
+      "paint": {
+        "text-color": "rgba(255, 255, 255, 1)",
+        "text-halo-color": "rgba(0, 0, 0, 1)",
+        "text-halo-width": 1,
+        "text-opacity": 1
+      }
+    },
+    {
+      "id": "poi-markers-default-selected",
+      "type": "symbol",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "poi_label",
+      "minzoom": 0,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "has",
+          "name"
+        ],
+        [
+          "!has",
+          "maki"
+        ]
+      ],
+      "layout": {
+        "text-field": "{name}",
+        "icon-image": "circle-11",
+        "text-font": [
+          "Noto Sans Bold"
+        ],
+        "text-size": {
+          "base": 1,
+          "stops": [
+            [
+              13,
+              13
+            ],
+            [
+              14,
+              14
+            ]
+          ]
+        },
+        "icon-offset": [
+          0,
+          25
+        ],
+        "icon-size": 0.5,
+        "visibility": "none"
+      },
+      "paint": {
+        "text-color": "rgba(245, 167, 58, 1)",
+        "text-halo-color": "rgba(57, 42, 11, 1)",
+        "text-halo-width": 1,
+        "text-opacity": 1
+      }
+    },
+    {
+      "id": "poi-markers",
+      "type": "symbol",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "poi_label",
+      "minzoom": 0,
+      "filter": [
+        "all",
+        [
+          "has",
+          "name"
+        ],
+        [
+          "has",
+          "maki"
+        ]
+      ],
+      "layout": {
+        "text-field": "{name}",
+        "icon-image": "{maki}-11",
+        "text-font": [
+          "Noto Sans Bold"
+        ],
+        "text-size": {
+          "base": 1,
+          "stops": [
+            [
+              13,
+              12
+            ],
+            [
+              14,
+              13
+            ]
+          ]
+        },
+        "icon-offset": [
+          0,
+          15
+        ],
+        "visibility": "visible"
+      },
+      "paint": {
+        "text-color": "rgba(255, 255, 255, 1)",
+        "text-halo-color": "rgba(0, 0, 0, 1)",
+        "text-halo-width": 1,
+        "text-opacity": 1
+      }
+    },
+    {
+      "id": "poi-markers-selected",
+      "type": "symbol",
+      "metadata": {
+        "gt:mapmode": "satellite"
+      },
+      "source": "mapbox",
+      "source-layer": "poi_label",
+      "minzoom": 0,
+      "filter": [
+        "all",
+        [
+          "has",
+          "name"
+        ],
+        [
+          "has",
+          "maki"
+        ]
+      ],
+      "layout": {
+        "text-field": "{name}",
+        "icon-image": "{maki}-11",
+        "text-font": [
+          "Noto Sans Bold"
+        ],
+        "text-size": {
+          "base": 1,
+          "stops": [
+            [
+              13,
+              12
+            ],
+            [
+              14,
+              13
+            ]
+          ]
+        },
+        "icon-offset": [
+          0,
+          15
+        ],
+        "visibility": "none"
+      },
+      "paint": {
+        "text-color": "rgba(245, 167, 58, 1)",
+        "text-halo-color": "rgba(57, 42, 11, 1)",
+        "text-halo-width": 1,
+        "text-opacity": 1
+      }
+    }
+  ],
+  "id": "mapbox.geobingan.1.0.0"
+}
