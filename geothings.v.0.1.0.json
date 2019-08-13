@@ -8,8 +8,8 @@
       "tiles": [
         "https://tiles.geothings.info/all/{z}/{x}/{y}.mvt"
       ],
-      "minZoom": 0,
-      "maxZoom": 22
+      "minzoom": 0,
+      "maxzoom": 16
     },
     "natural_earth_raster": {
       "type": "raster",
