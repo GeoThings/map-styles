@@ -1391,7 +1391,7 @@
       }
     },
     {
-      "id": "buldings",
+      "id": "buildings",
       "type": "fill",
       "source": "tilezen",
       "source-layer": "buildings",
