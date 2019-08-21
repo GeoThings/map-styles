@@ -1401,6 +1401,21 @@
       }
     },
     {
+      "id": "buildings-3d",
+      "type": "fill-extrusion",
+      "source": "tilezen",
+      "source-layer": "buildings",
+      "paint": {
+        "fill-extrusion-opacity": 0.75,
+        "fill-extrusion-height": {
+          "property": "height",
+          "type": "identity",
+          "default": 4
+        },
+        "fill-extrusion-color": "rgba(162, 161, 161, 0.85)"
+      }
+    },
+    {
       "id": "country-names",
       "type": "symbol",
       "source": "tilezen",
@@ -2053,21 +2068,6 @@
         "text-color": "rgba(3, 1, 1, 1)",
         "text-halo-color": "rgba(255,255,255,0.8)",
         "text-halo-width": 1.2
-      }
-    },
-    {
-      "id": "buildings-3d",
-      "type": "fill-extrusion",
-      "source": "tilezen",
-      "source-layer": "buildings",
-      "paint": {
-        "fill-extrusion-opacity": 0.75,
-        "fill-extrusion-height": {
-          "property": "height",
-          "type": "identity",
-          "default": 4
-        },
-        "fill-extrusion-color": "rgba(162, 161, 161, 0.85)"
       }
     }
   ],
