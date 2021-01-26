@@ -15,7 +15,6 @@
     {
       "id": "background",
       "type": "background",
-      "maxzoom": 22,
       "paint": {
         "background-color": "#e3e2df"
       }
